@@ -1,4 +1,4 @@
-import { ExternalLink, Mail, MapPin, Phone } from "lucide-react";
+import { ExternalLink, Mail, MapPin } from "lucide-react";
 import { site, type Locale } from "@/config/site";
 import { getDictionary } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
@@ -37,17 +37,6 @@ export default async function ContactPage({ params }: Props) {
             <ul className="mt-5 space-y-4">
               <li className="flex items-center gap-3">
                 <span className="icon-tile size-10">
-                  <Phone className="size-5" aria-hidden="true" />
-                </span>
-                <div>
-                  <p className="text-xs text-muted">{c.phone}</p>
-                  <a href={`tel:${site.phone.tel}`} className="ltr-nums font-semibold hover:text-brand">
-                    {site.phone.display}
-                  </a>
-                </div>
-              </li>
-              <li className="flex items-center gap-3">
-                <span className="icon-tile size-10">
                   <Mail className="size-5" aria-hidden="true" />
                 </span>
                 <div>
@@ -58,9 +47,9 @@ export default async function ContactPage({ params }: Props) {
                 </div>
               </li>
             </ul>
-            <a href={`tel:${site.phone.tel}`} className="btn-primary mt-6 w-full">
-              <Phone className="size-4" aria-hidden="true" />
-              {c.callNow}
+            <a href={`mailto:${site.email}`} className="btn-primary mt-6 w-full">
+              <Mail className="size-4" aria-hidden="true" />
+              {c.emailUs}
             </a>
           </section>
 

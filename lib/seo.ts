@@ -62,15 +62,9 @@ export function localBusinessJsonLd(locale: Locale) {
     url: `${site.url}${localePath(locale)}`,
     logo: `${site.url}/logo.jpg`,
     image: `${site.url}/og.jpg`,
-    telephone: site.phone.tel,
     email: site.email,
     foundingDate: String(site.founded),
-    taxID: site.unifiedNumber,
-    identifier: [
-      { "@type": "PropertyValue", propertyID: "CR", value: site.crNumber },
-      { "@type": "PropertyValue", propertyID: "UnifiedNationalNumber", value: site.unifiedNumber },
-      { "@type": "PropertyValue", propertyID: "NationalShortAddress", value: a.short },
-    ],
+    identifier: [{ "@type": "PropertyValue", propertyID: "NationalShortAddress", value: a.short }],
     address: {
       "@type": "PostalAddress",
       streetAddress:

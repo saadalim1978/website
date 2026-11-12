@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Globe, Menu, Phone, X } from "lucide-react";
+import { Globe, Mail, Menu, X } from "lucide-react";
 import { site, localePath, type Locale, type RouteKey } from "@/config/site";
 import type { Dictionary } from "@/content/ar";
 
@@ -78,10 +78,10 @@ export default function SiteHeader({ locale, nav }: { locale: Locale; nav: Dicti
             <Globe className="size-4" aria-hidden="true" />
             {nav.switchLang}
           </Link>
-          <a href={`tel:${site.phone.tel}`} className="btn-primary hidden md:inline-flex">
-            <Phone className="size-4" aria-hidden="true" />
-            <span className="ltr-nums">{site.phone.display}</span>
-          </a>
+          <Link href={localePath(locale, "contact")} className="btn-primary hidden md:inline-flex">
+            <Mail className="size-4" aria-hidden="true" />
+            {nav.contact}
+          </Link>
           <button
             type="button"
             className="inline-flex size-11 items-center justify-center rounded-lg text-ink hover:bg-surface lg:hidden"
@@ -115,9 +115,9 @@ export default function SiteHeader({ locale, nav }: { locale: Locale; nav: Dicti
             </li>
           ))}
           <li className="mt-2">
-            <a href={`tel:${site.phone.tel}`} className="btn-primary w-full">
-              <Phone className="size-4" aria-hidden="true" />
-              {nav.callUs} · <span className="ltr-nums">{site.phone.display}</span>
+            <a href={`mailto:${site.email}`} className="btn-primary w-full">
+              <Mail className="size-4" aria-hidden="true" />
+              <span className="ltr-nums">{site.email}</span>
             </a>
           </li>
         </ul>

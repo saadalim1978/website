@@ -32,7 +32,7 @@ export const en: Dictionary = {
       contact: {
         title: "Contact Us",
         description:
-          "Contact Competitive Solutions Co. in Riyadh: phone 0118274008, email a@competitive.sa, national short address RUKA8884.",
+          "Contact Competitive Solutions Co. in Riyadh: email a@competitive.sa, national short address RUKA8884.",
       },
     },
   },
@@ -48,7 +48,6 @@ export const en: Dictionary = {
     openMenu: "Open menu",
     closeMenu: "Close menu",
     skipToContent: "Skip to content",
-    callUs: "Call us",
   },
 
   common: {
@@ -106,8 +105,6 @@ export const en: Dictionary = {
       sectorValue: "Information & Communications Technology",
       hq: "Headquarters",
       hqValue: "Riyadh, Kingdom of Saudi Arabia",
-      cr: "Commercial Registration",
-      unified: "Unified National Number",
     },
     visionTitle: "Our Vision",
     vision:
@@ -274,11 +271,10 @@ export const en: Dictionary = {
     mailtoOpened: "Your message is ready in your email app — press Send to complete it. If the app didn't open, email us at",
     invalidMobile: "Enter a valid mobile number",
     infoTitle: "Contact details",
-    phone: "Phone",
     email: "Email",
     addressTitle: "National Address",
     shortAddress: "Short address",
-    callNow: "Call now",
+    emailUs: "Email us",
     mapTitle: "Find us on the map",
     openInMaps: "Open in Google Maps",
   },
@@ -288,8 +284,6 @@ export const en: Dictionary = {
     quickLinks: "Quick links",
     contact: "Contact",
     address: "National Address",
-    cr: "Commercial Registration",
-    unified: "Unified National Number",
     rights: "All rights reserved.",
   },
 

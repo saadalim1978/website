@@ -31,7 +31,7 @@ export const ar = {
       contact: {
         title: "تواصل معنا",
         description:
-          "تواصل مع شركة الحلول التنافسية في الرياض: الهاتف 0118274008، البريد a@competitive.sa، العنوان الوطني RUKA8884.",
+          "تواصل مع شركة الحلول التنافسية في الرياض: البريد الإلكتروني a@competitive.sa، العنوان الوطني المختصر RUKA8884.",
       },
     },
   },
@@ -47,7 +47,6 @@ export const ar = {
     openMenu: "فتح القائمة",
     closeMenu: "إغلاق القائمة",
     skipToContent: "تخطَّ إلى المحتوى",
-    callUs: "اتصل بنا",
   },
 
   common: {
@@ -105,8 +104,6 @@ export const ar = {
       sectorValue: "تقنية المعلومات والاتصالات",
       hq: "المقر",
       hqValue: "الرياض، المملكة العربية السعودية",
-      cr: "السجل التجاري",
-      unified: "الرقم الوطني الموحد",
     },
     visionTitle: "رؤيتنا",
     vision:
@@ -277,11 +274,10 @@ export const ar = {
     mailtoOpened: "تم تجهيز رسالتك في تطبيق البريد لديك، اضغط إرسال لإتمامها. إذا لم يُفتح التطبيق راسلنا على",
     invalidMobile: "أدخل رقم جوال صحيح",
     infoTitle: "بيانات التواصل",
-    phone: "الهاتف",
     email: "البريد الإلكتروني",
     addressTitle: "العنوان الوطني",
     shortAddress: "العنوان المختصر",
-    callNow: "اتصل الآن",
+    emailUs: "راسلنا عبر البريد",
     mapTitle: "موقعنا على الخريطة",
     openInMaps: "افتح في خرائط Google",
   },
@@ -291,8 +287,6 @@ export const ar = {
     quickLinks: "روابط سريعة",
     contact: "تواصل",
     address: "العنوان الوطني",
-    cr: "السجل التجاري",
-    unified: "الرقم الوطني الموحد",
     rights: "جميع الحقوق محفوظة.",
   },
 

@@ -15,13 +15,6 @@ export const site = {
   },
 
   founded: 2023,
-  crNumber: "1010925670", // السجل التجاري
-  unifiedNumber: "7035580344", // الرقم الوطني الموحد
-
-  phone: {
-    display: "011 827 4008",
-    tel: "+966118274008",
-  },
   email: "a@competitive.sa",
 
   address: {

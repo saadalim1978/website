@@ -22,8 +22,6 @@ export default async function AboutPage({ params }: Props) {
     { label: a.facts.founded, value: String(site.founded), ltr: true },
     { label: a.facts.sector, value: a.facts.sectorValue },
     { label: a.facts.hq, value: a.facts.hqValue },
-    { label: a.facts.cr, value: site.crNumber, ltr: true },
-    { label: a.facts.unified, value: site.unifiedNumber, ltr: true },
   ];
 
   return (

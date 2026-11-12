@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { site, localePath, type Locale } from "@/config/site";
 import { getDictionary } from "@/lib/i18n";
 
@@ -55,28 +55,12 @@ export default function SiteFooter({ locale }: { locale: Locale }) {
           <h2 className="text-sm font-bold text-ink">{t.footer.contact}</h2>
           <ul className="mt-4 space-y-3 text-sm text-muted">
             <li>
-              <a href={`tel:${site.phone.tel}`} className="flex items-center gap-2 hover:text-brand">
-                <Phone className="size-4 text-brand" aria-hidden="true" />
-                <span className="ltr-nums">{site.phone.display}</span>
-              </a>
-            </li>
-            <li>
               <a href={`mailto:${site.email}`} className="flex items-center gap-2 hover:text-brand">
                 <Mail className="size-4 text-brand" aria-hidden="true" />
                 <span className="ltr-nums">{site.email}</span>
               </a>
             </li>
           </ul>
-          <dl className="mt-6 space-y-1.5 text-sm text-muted">
-            <div className="flex flex-wrap gap-x-2">
-              <dt>{t.footer.cr}:</dt>
-              <dd className="ltr-nums font-semibold text-ink">{site.crNumber}</dd>
-            </div>
-            <div className="flex flex-wrap gap-x-2">
-              <dt>{t.footer.unified}:</dt>
-              <dd className="ltr-nums font-semibold text-ink">{site.unifiedNumber}</dd>
-            </div>
-          </dl>
         </div>
       </div>
       <div className="border-t border-line">
