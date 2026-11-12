@@ -40,7 +40,7 @@ export default function SiteHeader({ locale, nav }: { locale: Locale; nav: Dicti
       <div className="container-x flex h-16 items-center justify-between gap-4 lg:h-20">
         <Link href={localePath(locale)} className="flex items-center gap-3" aria-label={site.name[locale]}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo-mark.png" alt="" width={211} height={128} className="h-9 w-auto lg:h-11" />
+          <img src="/logo-mark.png" alt="" width={145} height={88} className="h-9 w-auto lg:h-11" />
           <span className="flex flex-col leading-tight">
             <span className="text-sm font-bold text-ink sm:text-base">{site.name[locale]}</span>
             <span className="hidden text-xs text-muted sm:block" lang={other}>
@@ -72,7 +72,7 @@ export default function SiteHeader({ locale, nav }: { locale: Locale; nav: Dicti
             href={switchHref}
             hrefLang={other}
             lang={other}
-            aria-label={nav.switchLangLabel}
+            title={nav.switchLangLabel}
             className="inline-flex min-h-11 items-center gap-1.5 rounded-lg px-3 text-sm font-medium text-ink/80 hover:text-brand"
           >
             <Globe className="size-4" aria-hidden="true" />

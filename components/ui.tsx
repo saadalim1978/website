@@ -41,7 +41,7 @@ export function PageHero({ title, subtitle, eyebrow }: { title: string; subtitle
       <Decor />
       <div className="container-x relative py-14 sm:py-20">
         {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-        <h1 className="mt-2 max-w-3xl animate-fade-up text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
+        <h1 className="mt-2 max-w-3xl text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
           {title}
         </h1>
         {subtitle && <p className="mt-5 max-w-2xl text-base leading-8 text-muted sm:text-lg">{subtitle}</p>}

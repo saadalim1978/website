@@ -30,7 +30,7 @@ export default async function HomePage({ params }: Props) {
             <span className="size-2 rounded-full bg-gold" aria-hidden="true" />
             {h.eyebrow}
           </p>
-          <h1 className="mt-4 max-w-3xl animate-fade-up text-3xl font-bold leading-[1.3] sm:text-5xl sm:leading-[1.25]">
+          <h1 className="mt-4 max-w-3xl text-3xl font-bold leading-[1.3] sm:text-5xl sm:leading-[1.25]">
             {h.heroTitle}
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-8 text-muted sm:text-lg">{h.heroSubtitle}</p>
