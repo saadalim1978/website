@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+/* هوية الموقع — الألوان مستخرجة من ملف الشعار */
+@theme {
+  --color-ink: #0a0a0a; /* أسود الشعار */
+  --color-brand: #1f6f4f; /* أخضر القوس */
+  --color-brand-dark: #175a3f;
+  --color-brand-50: #eef6f1;
+  --color-brand-100: #d5eadd;
+  --color-olive: #587840; /* أخضر النص العربي */
+  --color-gold: #f8d858; /* الأصفر الذهبي */
+  --color-gold-soft: #fdf6d8;
+  --color-muted: #4b5563;
+  --color-line: #e5e7eb;
+  --color-surface: #f6f8f6;
+
+  --font-sans: var(--font-plex), "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif;
+
+  --animate-fade-up: fade-up 0.6s ease-out both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-white text-ink antialiased;
+    font-family: var(--font-sans);
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-brand);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  /* أرقام ونصوص لاتينية داخل النص العربي */
+  .ltr-nums {
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@utility container-x {
+  @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+}
+@utility btn {
+  @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold transition-colors duration-200;
+}
+@utility btn-primary {
+  @apply btn bg-brand text-white hover:bg-brand-dark;
+}
+@utility btn-outline {
+  @apply btn border border-line bg-white text-ink hover:border-brand hover:text-brand;
+}
+@utility btn-light {
+  @apply btn bg-white text-brand hover:bg-brand-50;
+}
+@utility card {
+  @apply rounded-2xl border border-line bg-white p-6 transition-shadow duration-200;
+}
+@utility eyebrow {
+  @apply inline-flex items-center gap-2 text-sm font-semibold text-brand;
+}
+@utility icon-tile {
+  @apply flex size-12 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand;
+}
