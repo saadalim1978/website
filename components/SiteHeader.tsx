@@ -78,10 +78,6 @@ export default function SiteHeader({ locale, nav }: { locale: Locale; nav: Dicti
             <Globe className="size-4" aria-hidden="true" />
             {nav.switchLang}
           </Link>
-          <Link href={localePath(locale, "contact")} className="btn-primary hidden md:inline-flex">
-            <Mail className="size-4" aria-hidden="true" />
-            {nav.contact}
-          </Link>
           <button
             type="button"
             className="inline-flex size-11 items-center justify-center rounded-lg text-ink hover:bg-surface lg:hidden"
