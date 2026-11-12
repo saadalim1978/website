@@ -64,7 +64,7 @@ export default async function ServicesPage({ params }: Props) {
                     </li>
                   ))}
                 </ul>
-                <Link href={localePath(locale, "contact")} className="mt-6 inline-flex text-sm font-semibold text-brand hover:underline">
+                <Link href={`${localePath(locale, "contact")}?service=${item.id}`} className="mt-6 inline-flex text-sm font-semibold text-brand hover:underline">
                   {t.common.requestQuote}
                 </Link>
               </div>

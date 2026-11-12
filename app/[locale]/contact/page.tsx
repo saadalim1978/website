@@ -26,7 +26,7 @@ export default async function ContactPage({ params }: Props) {
           <h2 id="form-title" className="mb-6 text-xl font-bold">
             {c.formTitle}
           </h2>
-          <ContactForm t={c} services={t.services.items.map((s) => s.title)} email={site.email} />
+          <ContactForm t={c} services={t.services.items.map((s) => ({ id: s.id, title: s.title }))} email={site.email} />
         </section>
 
         <aside className="space-y-6 lg:col-span-2">

@@ -88,7 +88,7 @@ export default async function ProductsPage({ params }: Props) {
       <CtaBand
         title={p.ctaTitle}
         text={p.ctaText}
-        primary={{ href: localePath(locale, "contact"), label: t.common.requestQuote }}
+        primary={{ href: `${localePath(locale, "contact")}?service=hardware`, label: t.common.requestQuote }}
       />
     </>
   );

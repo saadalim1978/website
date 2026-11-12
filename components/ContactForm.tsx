@@ -1,14 +1,17 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { CheckCircle2, AlertCircle, Send } from "lucide-react";
 import type { Dictionary } from "@/content/ar";
 
-type Status = "idle" | "sending" | "success" | "error";
+type Status = "idle" | "sending" | "success" | "mailto" | "error";
+type ServiceOption = { id: string; title: string };
 
 /**
- * نموذج التواصل — يُرسل مباشرة إلى Formspree بدون سيرفر.
- * المعرّف يُقرأ من NEXT_PUBLIC_FORMSPREE_ID وقت البناء.
+ * نموذج التواصل:
+ * - إذا كان NEXT_PUBLIC_FORMSPREE_ID مضبوطاً وقت البناء ← يُرسل مباشرة عبر Formspree.
+ * - إذا لم يكن مضبوطاً ← يفتح تطبيق البريد لدى الزائر برسالة جاهزة إلى بريد الشركة.
+ * في الحالتين يعمل النموذج دائماً، ولا تظهر للزائر أي رسالة عن الإعدادات.
  */
 export default function ContactForm({
   t,
@@ -16,16 +19,40 @@ export default function ContactForm({
   email,
 }: {
   t: Dictionary["contact"];
-  services: string[];
+  services: ServiceOption[];
   email: string;
 }) {
   const formId = process.env.NEXT_PUBLIC_FORMSPREE_ID ?? "";
   const [status, setStatus] = useState<Status>("idle");
   const [mobileError, setMobileError] = useState(false);
+  const serviceRef = useRef<HTMLSelectElement>(null);
+
+  // اختيار الخدمة تلقائياً عند القدوم من رابط مثل ?service=software
+  useEffect(() => {
+    const id = new URLSearchParams(window.location.search).get("service");
+    const match = services.find((s) => s.id === id);
+    if (match && serviceRef.current) serviceRef.current.value = match.title;
+  }, [services]);
+
+  function openMailClient(data: FormData) {
+    const get = (k: string) => String(data.get(k) ?? "").trim();
+    const lines = [
+      `${t.fields.name}: ${get("name")}`,
+      `${t.fields.organization}: ${get("organization") || "-"}`,
+      `${t.fields.mobile}: ${get("mobile")}`,
+      `${t.fields.email}: ${get("email")}`,
+      `${t.fields.service}: ${get("service")}`,
+      "",
+      get("message"),
+    ];
+    const subject = `${t.mailSubject} — ${get("service")}`;
+    window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
+  }
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
+    if (!form.reportValidity()) return;
     const data = new FormData(form);
 
     // أرقام سعودية أو دولية: 7 إلى 15 رقماً مع + اختيارية
@@ -38,7 +65,8 @@ export default function ContactForm({
     setMobileError(false);
 
     if (!formId) {
-      setStatus("error");
+      openMailClient(data);
+      setStatus("mailto");
       return;
     }
 
@@ -71,19 +99,7 @@ export default function ContactForm({
   );
 
   return (
-    <form onSubmit={onSubmit} className="space-y-5" noValidate={false}>
-      {!formId && (
-        <p className="flex gap-2 rounded-lg bg-gold-soft p-3 text-sm text-ink" role="note">
-          <AlertCircle className="mt-0.5 size-4 shrink-0 text-olive" aria-hidden="true" />
-          <span>
-            {t.notConfigured}{" "}
-            <a href={`mailto:${email}`} className="ltr-nums font-semibold text-brand underline">
-              {email}
-            </a>
-          </span>
-        </p>
-      )}
-
+    <form onSubmit={onSubmit} className="space-y-5" noValidate>
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="cf-name" className={label}>
@@ -136,13 +152,13 @@ export default function ContactForm({
           {t.fields.service}
           {req}
         </label>
-        <select id="cf-service" name="service" required defaultValue="" className={input}>
+        <select id="cf-service" name="service" required defaultValue="" ref={serviceRef} className={input}>
           <option value="" disabled>
             {t.fields.servicePlaceholder}
           </option>
           {services.map((s) => (
-            <option key={s} value={s}>
-              {s}
+            <option key={s.id} value={s.title}>
+              {s.title}
             </option>
           ))}
           <option value={t.fields.serviceOther}>{t.fields.serviceOther}</option>
@@ -159,7 +175,7 @@ export default function ContactForm({
 
       {/* حقل مخفي لمكافحة الرسائل المزعجة (Formspree honeypot) */}
       <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
-      <input type="hidden" name="_subject" value="رسالة جديدة من موقع الحلول التنافسية" />
+      <input type="hidden" name="_subject" value={t.mailSubject} />
 
       <div aria-live="polite" role="status">
         {status === "success" && (
@@ -168,11 +184,22 @@ export default function ContactForm({
             {t.success}
           </p>
         )}
+        {status === "mailto" && (
+          <p className="flex gap-2 rounded-lg bg-brand-50 p-3 text-sm text-brand-dark">
+            <CheckCircle2 className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
+            <span>
+              {t.mailtoOpened}{" "}
+              <a href={`mailto:${email}`} className="ltr-nums font-semibold underline">
+                {email}
+              </a>
+            </span>
+          </p>
+        )}
         {status === "error" && (
           <p className="flex gap-2 rounded-lg bg-red-50 p-3 text-sm text-red-800">
             <AlertCircle className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
             <span>
-              {formId ? t.error : t.notConfigured}{" "}
+              {t.error}{" "}
               <a href={`mailto:${email}`} className="ltr-nums font-semibold underline">
                 {email}
               </a>
