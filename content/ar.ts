@@ -31,7 +31,7 @@ export const ar = {
       contact: {
         title: "تواصل معنا",
         description:
-          "تواصل مع شركة الحلول التنافسية في الرياض: البريد الإلكتروني a@competitive.sa، العنوان الوطني المختصر RUKA8884.",
+          "تواصل مع شركة الحلول التنافسية في الرياض: البريد الإلكتروني a@competitive.sa، حي سدرة، طريق المطار.",
       },
     },
   },
@@ -276,7 +276,6 @@ export const ar = {
     infoTitle: "بيانات التواصل",
     email: "البريد الإلكتروني",
     addressTitle: "العنوان الوطني",
-    shortAddress: "العنوان المختصر",
     emailUs: "راسلنا عبر البريد",
     mapTitle: "موقعنا على الخريطة",
     openInMaps: "افتح في خرائط Google",

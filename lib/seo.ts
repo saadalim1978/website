@@ -64,7 +64,6 @@ export function localBusinessJsonLd(locale: Locale) {
     image: `${site.url}/og.jpg`,
     email: site.email,
     foundingDate: String(site.founded),
-    identifier: [{ "@type": "PropertyValue", propertyID: "NationalShortAddress", value: a.short }],
     address: {
       "@type": "PostalAddress",
       streetAddress:

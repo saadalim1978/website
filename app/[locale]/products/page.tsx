@@ -40,7 +40,7 @@ export default async function ProductsPage({ params }: Props) {
               {p.partnerName}
             </p>
           </div>
-          {/* مكان شارة الشريك الرسمية — انظر config/site.ts ← lenovoBadge */}
+          {/* شعار Lenovo — يظهر تلقائياً عند وجود public/partners/lenovo-logo.png */}
           <PartnerBadge locale={locale} size="lg" />
         </div>
       </section>

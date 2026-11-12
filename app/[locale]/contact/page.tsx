@@ -59,9 +59,6 @@ export default async function ContactPage({ params }: Props) {
               {c.addressTitle}
             </h2>
             <address className="mt-4 text-sm not-italic leading-7 text-ink/85">{site.address[locale]}</address>
-            <p className="mt-3 text-sm text-muted">
-              {c.shortAddress}: <span className="ltr-nums font-bold text-ink">{site.address.short}</span>
-            </p>
           </section>
         </aside>
       </div>

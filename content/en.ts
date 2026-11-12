@@ -32,7 +32,7 @@ export const en: Dictionary = {
       contact: {
         title: "Contact Us",
         description:
-          "Contact Competitive Solutions Co. in Riyadh: email a@competitive.sa, national short address RUKA8884.",
+          "Contact Competitive Solutions Co. in Riyadh: email a@competitive.sa, Airport Road, Sedra District.",
       },
     },
   },
@@ -273,7 +273,6 @@ export const en: Dictionary = {
     infoTitle: "Contact details",
     email: "Email",
     addressTitle: "National Address",
-    shortAddress: "Short address",
     emailUs: "Email us",
     mapTitle: "Find us on the map",
     openInMaps: "Open in Google Maps",

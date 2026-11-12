@@ -45,9 +45,6 @@ export default function SiteFooter({ locale }: { locale: Locale }) {
               <MapPin className="mt-1 size-4 shrink-0 text-brand" aria-hidden="true" />
               <span>{site.address[locale]}</span>
             </p>
-            <p className="ps-6">
-              {t.contact.shortAddress}: <span className="ltr-nums font-semibold text-ink">{site.address.short}</span>
-            </p>
           </address>
         </div>
 

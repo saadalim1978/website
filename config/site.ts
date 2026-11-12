@@ -20,7 +20,6 @@ export const site = {
   address: {
     ar: "مبنى 8884، طريق المطار، حي سدرة، الرقم الإضافي 3667، الرياض 13413، المملكة العربية السعودية",
     en: "Building 8884, Airport Road, Sedra Dist., Additional No. 3667, Riyadh 13413, Kingdom of Saudi Arabia",
-    short: "RUKA8884",
     // حقول منفصلة لبيانات Schema.org
     buildingNumber: "8884",
     street: { ar: "طريق المطار", en: "Airport Road" },
@@ -40,11 +39,11 @@ export const site = {
   mapOpenUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addressQueryEn)}`,
 
   /**
-   * شارة الشريك الرسمية من Lenovo — ضع الملف في public/partners/
-   * ثم اكتب مساره هنا، مثال: "/partners/lenovo-360-badge.png"
-   * اتركه null لعرض الشارة النصية المؤقتة.
+   * شعار Lenovo — يظهر تلقائياً في شريط الشراكات وصفحة المنتجات
+   * بمجرد وجود الملف في public/partners/lenovo-logo.png
+   * (إذا لم يوجد الملف تظهر شارة نصية بدلاً منه).
    */
-  lenovoBadge: null as string | null,
+  lenovoLogo: "/partners/lenovo-logo.png",
 
   /** معرّف Formspree يُقرأ من متغير البيئة وقت البناء */
   formspreeId: process.env.NEXT_PUBLIC_FORMSPREE_ID ?? "",
