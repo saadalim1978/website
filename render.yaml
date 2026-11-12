@@ -1,0 +1,120 @@
+# Render Blueprint — موقع شركة الحلول التنافسية (Static Site)
+# يُنشر تلقائياً مع كل push على فرع main.
+services:
+  - type: web
+    runtime: static
+    name: competitive-solutions-website
+    branch: main
+    autoDeployTrigger: commit
+    buildCommand: npm ci && npm run build
+    staticPublishPath: ./out
+    previews:
+      generation: "off"
+
+    envVars:
+      # إصدار Node المستخدم في البناء (مطابق لملف .nvmrc)
+      - key: NODE_VERSION
+        value: "22"
+      # معرّف نموذج Formspree — أضف القيمة من لوحة Render (لا تضعها هنا)
+      - key: NEXT_PUBLIC_FORMSPREE_ID
+        sync: false
+
+    domains:
+      - solutions.competitive.sa
+
+    # ملاحظة: Render لا يطبّق هذه القواعد إذا وُجد ملف فعلي في المسار المطلوب،
+    # لذلك تبقى الصفحات والملفات الثابتة تُخدَّم كما هي، والقواعد تعمل للمسارات غير الموجودة فقط.
+    routes:
+      # الصفحة الجذرية ← النسخة العربية الافتراضية
+      - type: redirect
+        source: /
+        destination: /ar/
+      # مسارات بدون شرطة أخيرة
+      - type: redirect
+        source: /ar
+        destination: /ar/
+      - type: redirect
+        source: /en
+        destination: /en/
+      - type: redirect
+        source: /ar/about
+        destination: /ar/about/
+      - type: redirect
+        source: /ar/services
+        destination: /ar/services/
+      - type: redirect
+        source: /ar/products
+        destination: /ar/products/
+      - type: redirect
+        source: /ar/contact
+        destination: /ar/contact/
+      - type: redirect
+        source: /en/about
+        destination: /en/about/
+      - type: redirect
+        source: /en/services
+        destination: /en/services/
+      - type: redirect
+        source: /en/products
+        destination: /en/products/
+      - type: redirect
+        source: /en/contact
+        destination: /en/contact/
+      # مسارات بدون بادئة لغة ← العربية
+      - type: redirect
+        source: /about
+        destination: /ar/about/
+      - type: redirect
+        source: /services
+        destination: /ar/services/
+      - type: redirect
+        source: /products
+        destination: /ar/products/
+      - type: redirect
+        source: /contact
+        destination: /ar/contact/
+      # أي مسار غير موجود ← صفحة 404 ثنائية اللغة
+      - type: rewrite
+        source: /*
+        destination: /404.html
+
+    headers:
+      # ملفات Next.js الثابتة تحمل بصمة (hash) في اسمها ← تخزين طويل
+      - path: /_next/static/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      # الصور والأيقونات
+      - path: /logo.jpg
+        name: Cache-Control
+        value: public, max-age=604800
+      - path: /logo-mark.png
+        name: Cache-Control
+        value: public, max-age=604800
+      - path: /og.jpg
+        name: Cache-Control
+        value: public, max-age=604800
+      - path: /partners/*
+        name: Cache-Control
+        value: public, max-age=604800
+      - path: /icon.png
+        name: Cache-Control
+        value: public, max-age=604800
+      - path: /apple-icon.png
+        name: Cache-Control
+        value: public, max-age=604800
+      - path: /favicon.ico
+        name: Cache-Control
+        value: public, max-age=604800
+      # رؤوس أمان عامة
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      - path: /*
+        name: Permissions-Policy
+        value: camera=(), microphone=(), geolocation=()
